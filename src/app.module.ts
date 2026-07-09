@@ -17,7 +17,7 @@ import { PushToken } from './push/push-token.entity';
       type: 'postgres',
       url: process.env.DATABASE_URL,
       entities: [User, Transaction, PushToken],
-      synchronize: true, // TEMPORARY — recreates schema, revert after one deploy
+      synchronize: process.env.NODE_ENV !== 'production',
     }),
     UsersModule,
     AuthModule,
